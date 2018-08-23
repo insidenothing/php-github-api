@@ -35,6 +35,7 @@ abstract class CheckRunsApi extends AbstractApi
      * @param string $name
      * @param string $head_sha	
      * @param string $conclusion
+     * @param sting $started_at
      * @param string $completed_at ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ
      * @param array $output
      * @param array $annotations
@@ -44,7 +45,7 @@ abstract class CheckRunsApi extends AbstractApi
      */
     
     
-    public function run_check($username, $repository, $name, $head_sha, $conclusion, $completed_at, array $output, array $annotations, array $images, array $actions)
+    public function run_check($username, $repository, $name, $head_sha, $conclusion, $started_at, $completed_at, array $output, array $annotations, array $images, array $actions)
     {
         return $this->post('/repos/'.rawurlencode($username).'/'.rawurlencode($repository).'/check-runs',  ['name' => $name, 'head_sha' => $head_sha, 'conclusion' => $conclusion, 'completed_at' => $completed_at, 'output' => $output, 'annotations' => $annotations, 'images' => $images, 'actions' => $actions ]);
     }
