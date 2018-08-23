@@ -16,11 +16,20 @@
             "homepage": "http://ornicar.github.com"
         }
     ],
-    "source": {
-            "url": "https://github.com/insidenothing/php-github-api.git", //git url
-            "type": "git",
-            "reference": "master" //git branch-name
+    "repositories":[
+        {
+            "type":"package",
+            "package":{
+                "name":"insidenothing/php-github-api",
+                "version":"master",
+                "source":{
+                    "url":"https://github.com/insidenothing/php-github-api.git",
+                    "type":"git",
+                    "reference":"master"
+                }
+            }
         }
+        ]
     "require": {
         "php": "^5.6 || ^7.0",
         "psr/http-message": "^1.0",
@@ -45,7 +54,6 @@
     "autoload-dev": {
         "psr-4": { "Github\\Tests\\": "test/Github/Tests/"}
     },
-    "prefer-stable": true,
     "extra": {
         "branch-alias": {
             "dev-master": "2.9.x-dev"
