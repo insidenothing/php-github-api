@@ -40,7 +40,6 @@
     "autoload-dev": {
         "psr-4": { "Github\\Tests\\": "test/Github/Tests/"}
     },
-    "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
