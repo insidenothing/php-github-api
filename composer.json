@@ -1,5 +1,5 @@
 {
-    "name": "insidenothing/github-api",
+    "name": "insidenothing/php-github-api",
     "type": "library",
     "description": "GitHub API v3 client",
     "homepage": "https://github.com/insidenothing/php-github-api",
