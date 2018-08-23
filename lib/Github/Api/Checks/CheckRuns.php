@@ -20,28 +20,34 @@ abstract class CheckRunsApi extends AbstractApi
      */
     public function configure()
     {
-        $this->acceptHeaderValue = 'application/vnd.github.inertia-preview+json';
+        $this->acceptHeaderValue = 'application/vnd.github.antiope-preview+json';
 
         return $this;
     }
 
-    public function show($id, array $params = [])
+     /**
+     * run check
+     *
+     * @link https://developer.github.com/v3/checks/runs/#create-a-check-run
+     * 
+     * @param string $username
+     * @param string $repository
+     * @param string $name
+     * @param string $head_sha	
+     * @param string $conclusion
+     * @param string $completed_at ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ
+     * @param array $output
+     * @param array $annotations
+     * @param array $images
+     * @param array $actions
+     * @return array
+     */
+    
+    
+    public function run_check($username, $repository, $name, $head_sha, $conclusion, $completed_at, array $output, array $annotations, array $images, array $actions)
     {
-        return $this->get('/projects/'.rawurlencode($id), array_merge(['page' => 1], $params));
+        return $this->post('/repos/'.rawurlencode($username).'/'.rawurlencode($repository).'/check-runs',  ['name' => $name, 'head_sha' => $head_sha, 'conclusion' => $conclusion, 'completed_at' => $completed_at, 'output' => $output, 'annotations' => $annotations, 'images' => $images, 'actions' => $actions ]);
     }
 
-    public function update($id, array $params)
-    {
-        return $this->patch('/projects/'.rawurlencode($id), $params);
-    }
-
-    public function deleteProject($id)
-    {
-        return $this->delete('/projects/'.rawurlencode($id));
-    }
-
-    public function columns()
-    {
-        return new Columns($this->client);
-    }
+    
 }
